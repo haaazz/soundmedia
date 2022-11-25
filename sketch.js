@@ -4,7 +4,7 @@ let button;
 function setup(){
     createCanvas(640,480);
     soundFormats('mp3','ogg');
-    musicFile=loadSound('music',loadMusic);
+    musicFile=loadSound('CantSlowMeDown',loadMusic);
     //musicFile.play();
     button = createButton("Play");
     button.mousePressed(togglePlaying);
