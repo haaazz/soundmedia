@@ -1,22 +1,31 @@
-var song;
-var button;
+let musicFile;
+let button;
 
 function setup(){
-    createCanvas(200,200);
-    song = loadSound('CantSlowMeDown',loaded);
-    button=createButton('play');
+    createCanvas(640,480);
+    soundFormats('mp3','ogg');
+    musicFile=loadSound('music',loadMusic);
+    //musicFile.play();
+    button = createButton("Play");
     button.mousePressed(togglePlaying);
-    background(51);
 }
 
 function togglePlaying(){
-    if (!song.isPlaying()){
-        song.play();
-        song.setvolume(0.3);
+    if (!musicFile.isPlaying()){
+        musicFile.play();
         button.html('pause');
+    }else{
+        musicFile.stop();
+        button.html('play');
     }
 }
 
-function loaded(){
-    console.log('loaded');
+function loadMusic(){
+    console.log("It' working");
+    //musicFile.play();//
+}
+
+function draw(){
+    fill(255,0,0);
+    ellipse(50,50,100,100);
 }
