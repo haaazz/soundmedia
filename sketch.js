@@ -1,11 +1,11 @@
 let musicFile;
-let musicFile2;
-let musicFile3;
 let button;
-let button2;
-let button3;
+let musicFile2;
 let button4;
+let musicFile3;
 let button5;
+
+let button3;
 var amp;
 let vol = 0.5;
 let fft
@@ -23,11 +23,10 @@ function setup(){
     button4.mousePressed(togglePlaying2);
     button5 = createButton("Play3");
     button5.mousePressed(togglePlaying3);
+
     amp = new p5.Amplitude();
     vol = createSlider(0, 1, vol, 0.01);
     fft = new p5.FFT();
-    button2 = createButton('reverse');
-    button2.mousePressed(toggleReverse);
     button3 = createButton('10sSkip');
 }
 
@@ -35,6 +34,10 @@ function togglePlaying(){
     if (!musicFile.isPlaying()){
         musicFile.play();
         button.html('pause');
+        button4.html('play');
+        button5.html('play');
+        musicFile2.pause();
+        musicFile3.pause();
     }else{
         musicFile.pause();
         button.html('play');
@@ -45,6 +48,10 @@ function togglePlaying2(){
     if (!musicFile2.isPlaying()){
         musicFile2.play();
         button4.html('pause');
+        button.html('play');
+        button5.html('play');
+        musicFile.pause();
+        musicFile3.pause();
     }else{
         musicFile2.pause();
         button4.html('play');
@@ -55,14 +62,14 @@ function togglePlaying3(){
     if (!musicFile3.isPlaying()){
         musicFile3.play();
         button5.html('pause');
+        button4.html('play');
+        button.html('play');
+        musicFile2.pause();
+        musicFile.pause();
     }else{
         musicFile3.pause();
         button5.html('play');
     }
-}
-
-function toggleReverse(){
-    
 }
 
 function loadMusic(){
