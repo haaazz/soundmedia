@@ -8,8 +8,8 @@ let button5;
 let button3;
 var amp;
 let vol = 0.5;
+let jump;
 let fft
-var rB;
 
 function setup(){
     createCanvas(640,480);
@@ -27,7 +27,14 @@ function setup(){
     amp = new p5.Amplitude();
     vol = createSlider(0, 1, vol, 0.01);
     fft = new p5.FFT();
-    button3 = createButton('10sSkip');
+    jump = createButton("Jump");
+    jump.mousePressed(jumpAudio);
+  
+    jump2 = createButton("Jump2");
+    jump2.mousePressed(jumpAudio2);
+  
+    jump3 = createButton("Jump3");
+    jump3.mousePressed(jumpAudio3);
 }
 
 function togglePlaying(){
@@ -76,6 +83,24 @@ function loadMusic(){
     console.log("It' working");
 }
 
+function jumpAudio(){
+  !musicFile.isPlaying();
+  var len = musicFile.duration();
+  musicFile.jump(len/10);
+}
+
+function jumpAudio2(){
+  !musicFile2.isPlaying();
+  var len = musicFile2.duration();
+  musicFile2.jump(len/5);
+}
+
+function jumpAudio3(){
+  !musicFile3.isPlaying();
+  var len = musicFile3.duration();
+  musicFile3.jump(len/5);
+}
+
 function draw(){
     fill(255,0,0);
     ellipse(50,50,100,100);
@@ -104,3 +129,4 @@ function draw(){
      ellipse(x, height-y, 7, 7);
     }
 }
+
